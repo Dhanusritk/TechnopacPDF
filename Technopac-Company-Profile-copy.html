@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Technopac — Company Profile (copy)</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; background: #d8d4cc; color: #1c2430;
+    font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .sheet {
+    width: 210mm; height: 297mm; margin: 8mm auto; background: #fff;
+    position: relative; overflow: hidden; page-break-after: always;
+  }
+  @media print { html, body { background: #fff; } .sheet { margin: 0; } }
+
+  .top { display: flex; justify-content: space-between; align-items: flex-start; padding: 8mm 12mm 0; }
+  .logo { width: 52mm; height: auto; display: block; }
+  .meta { text-align: right; font-size: 8pt; letter-spacing: 0.14em; text-transform: uppercase; color: #66707c; line-height: 1.5; padding-top: 2mm; }
+  .rule { margin: 3mm 12mm 0; height: 2.5px; background: #1f8f45; }
+
+  h1 {
+    margin: 3.5mm 12mm 0;
+    font-family: "Iowan Old Style", Palatino, Georgia, serif;
+    font-weight: 500; font-size: 22pt; line-height: 1.05; color: #102033;
+  }
+  .deck { margin: 1.5mm 12mm 0; font-size: 10.5pt; line-height: 1.35; color: #2c3542; }
+
+  .stats { margin: 3mm 12mm 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; }
+  .stat { background: #102033; color: #fff; padding: 2.4mm 3mm 2.6mm; }
+  .stat .n { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 12pt; line-height: 1; }
+  .stat .l { margin-top: 0.8mm; font-size: 6.8pt; letter-spacing: 0.05em; text-transform: uppercase; color: #c5ced6; }
+
+  .about { margin: 3mm 12mm 0; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 5mm; }
+  .kicker { margin: 0 0 1mm; font-size: 7.6pt; letter-spacing: 0.12em; text-transform: uppercase; color: #1a7fbe; font-weight: 700; }
+  .about p { margin: 0 0 2mm; font-size: 8.7pt; line-height: 1.38; color: #2c3542; }
+  .about ul { margin: 0; padding: 0; list-style: none; }
+  .about li { position: relative; padding-left: 3.2mm; margin: 0 0 1.1mm; font-size: 8.5pt; line-height: 1.3; color: #243040; }
+  .about li:before { content: ""; position: absolute; left: 0; top: 1.4mm; width: 1.6mm; height: 1.6mm; background: #1f8f45; }
+
+  .partners { margin: 3mm 12mm 0; }
+  .partners .kicker { margin-bottom: 1.2mm; }
+  .partners img { width: 100%; height: auto; display: block; border: 1px solid #e4e8e2; background: #fff; }
+
+  .close {
+    position: absolute; left: 0; right: 0; bottom: 0; background: #102033; color: #f4f1ea;
+    display: grid; grid-template-columns: 1.25fr 0.9fr; gap: 6mm; padding: 4.5mm 12mm 5mm;
+  }
+  .close h2 { margin: 0 0 1.2mm; font-family: "Iowan Old Style", Palatino, Georgia, serif; font-weight: 500; font-size: 13pt; color: #fff; }
+  .close p { margin: 0; font-size: 8.6pt; line-height: 1.38; color: #d7dee6; }
+  .close strong { color: #fff; font-size: 11pt; }
+  .close a { color: #fff; text-decoration: none; }
+
+  .head { display: flex; justify-content: space-between; align-items: baseline; padding: 8mm 12mm 3mm; border-bottom: 1px solid #e6e2da; }
+  .brand { font-size: 8.5pt; letter-spacing: 0.16em; font-weight: 700; color: #1f8f45; }
+  .brand span { color: #8a928c; font-weight: 500; }
+  h2.page {
+    margin: 3.5mm 12mm 1.5mm;
+    font-family: "Iowan Old Style", Palatino, Georgia, serif;
+    font-weight: 500; font-size: 18pt; color: #102033;
+  }
+  .sub { margin: 0 12mm 2.5mm; font-size: 10pt; line-height: 1.35; color: #3a4452; }
+  .cols { margin: 0 12mm; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 6mm; align-items: stretch; }
+  h3 { margin: 0 0 1.5mm; font-size: 11pt; color: #102033; }
+  .bodyp { margin: 0 0 2.5mm; font-size: 9.6pt; line-height: 1.4; color: #2c3542; }
+  .industries { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 0 0 3mm; }
+  .industries span { border: 1px solid #d7d1c6; padding: 1.1mm 2.2mm; font-size: 8.5pt; }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; }
+  .fact { background: #f4f1ea; padding: 2.5mm 3mm; }
+  .fact strong { display: block; font-size: 10pt; color: #102033; }
+  .fact span { font-size: 8.3pt; color: #3a4452; line-height: 1.3; }
+  .ask { background: #102033; color: #f4f1ea; padding: 4.5mm 5mm; }
+  .ask h3 { color: #fff; font-size: 12pt; }
+  .ask p, .ask .note { color: #d5dbe2; font-size: 9pt; line-height: 1.4; margin: 0 0 2mm; }
+  .ask ul { margin: 1.5mm 0 2mm; padding-left: 4mm; }
+  .ask li { color: #f4f1ea; font-size: 9pt; line-height: 1.35; margin: 0 0 1.3mm; }
+  .apps { margin: 0 11mm 24mm; display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 5mm; }
+  .app h3 { margin: 0 0 1mm; padding-bottom: 0.8mm; border-bottom: 2px solid #1f8f45; font-size: 8.6pt; letter-spacing: 0.03em; text-transform: uppercase; }
+  table { width: 100%; border-collapse: collapse; }
+  td { vertical-align: top; padding: 0.35mm 1.2mm 0.35mm 0; font-size: 7.5pt; line-height: 1.2; border-bottom: 1px solid #f1ece5; }
+  td.name { width: 42%; font-weight: 650; color: #102033; padding-right: 1.5mm; }
+  td.why { color: #3a4452; }
+  .foot {
+    position: absolute; left: 0; right: 0; bottom: 0; background: #102033; color: #f4f1ea;
+    padding: 4.2mm 12mm 4.6mm; display: grid; grid-template-columns: 1.4fr 1fr; gap: 6mm;
+  }
+  .foot strong { color: #fff; font-size: 11pt; }
+  .foot p { margin: 0.6mm 0 0; font-size: 8.3pt; line-height: 1.35; color: #d5dbe2; }
+  .foot a { color: #fff; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<section class="sheet">
+  <div class="top">
+    <img class="logo" src="technopac-logo.png" alt="Technopac" />
+  </div>
+  <div class="rule"></div>
+  <h1>A leading Indian packaging brand.</h1>
+  <p class="deck">Technopac was founded in 1998 and is based in Coimbatore. For 25+ years we have built automation, processing, packaging, and special-purpose machines that leading brands run every day.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="n">1998</div><div class="l">Founded in Coimbatore</div></div>
+    <div class="stat"><div class="n">25+</div><div class="l">Years of experience</div></div>
+    <div class="stat"><div class="n">2,00,000+</div><div class="l">Installations</div></div>
+    <div class="stat"><div class="n">10+</div><div class="l">Countries</div></div>
+  </div>
+
+  <div class="about">
+    <div>
+      <div class="kicker">The company</div>
+      <p>Trusted for high-quality machines that are versatile and flexible. Known for production speed, accuracy, and output that stays consistent. Support runs from the first consultation through to after-sales service.</p>
+      <p>Headquarters and manufacturing are in Coimbatore, with offices across India. Exports reach the Middle East, Sri Lanka, Malaysia, Singapore, Ghana, Albania, and Kenya, and the list is still growing.</p>
+    </div>
+    <div>
+      <div class="kicker">What we do</div>
+      <ul>
+        <li>Industrial robotics, automation, and integration</li>
+        <li>Special-purpose machines</li>
+        <li>Packaging and food-processing automation</li>
+        <li>Food, pharma, and chemical processing and packing</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="partners">
+    <img src="clients.png" alt="Some of our clients, including Nestlé, Britannia, ITC, Reliance, Amul, Aavin, P&amp;G, ISRO, TVS, Ramco, Murugappa and others" />
+  </div>
+
+  <div class="close">
+    <div>
+      <h2>What we can do for you</h2>
+      <p>Share the product and the pack. We recommend the machine, prepare a quotation, build it, install it, train your team, and stay for spares and service.</p>
+    </div>
+    <div>
+      <strong>+91 97911 62378</strong>
+      <p><a href="mailto:technopac.trak@gmail.com">technopac.trak@gmail.com</a><br />www.technopac.net<br />Coimbatore 641035</p>
+    </div>
+  </div>
+</section>
+
+<section class="sheet">
+  <div class="top">
+    <img class="logo" src="technopac-logo.png" alt="Technopac" />
+  </div>
+  <div class="rule"></div>
+  <h2 class="page">How a machine gets chosen.</h2>
+  <div class="cols">
+    <div>
+      <div class="kicker">Where the machines go</div>
+      <div class="industries">
+        <span>Food</span><span>Dairy</span><span>Pharma</span><span>Chemical</span><span>FMCG</span><span>Automotive</span>
+      </div>
+      <p class="bodyp">One machine, or a full line. The work starts with your product and ends with the line running, plus training and later service.</p>
+      <div class="kicker">What working with us looks like</div>
+      <div class="facts">
+        <div class="fact"><strong>1. You share the product</strong><span>Name, pack, weight, and how many packs you need.</span></div>
+        <div class="fact"><strong>2. We recommend</strong><span>A machine from our range, or one built for the job.</span></div>
+        <div class="fact"><strong>3. We build and try</strong><span>The machine is made and checked before it leaves.</span></div>
+        <div class="fact"><strong>4. We install</strong><span>On your line, with training, spares, and later service.</span></div>
+      </div>
+      <div class="kicker" style="margin-top:3.5mm;">Offices</div>
+      <p class="bodyp">Factory: Sf. No. 10/2B, V.K.V. Kumaraguru Nagar, Saravanampatti, Coimbatore 641035. Offices in Hyderabad and Mysuru. Partner desks in Sri Lanka, Kenya, China, and Hong Kong.</p>
+    </div>
+    <div class="ask">
+      <h3>How we help you select a machine</h3>
+      <p>To recommend a suitable machine and prepare a quotation, please share:</p>
+      <ul>
+        <li>Product name and a brief description</li>
+        <li>Packing format: pouch, bottle, jar, bag, tray, or carton</li>
+        <li>Pack weight or volume, and pouch or bag size, if you have it</li>
+        <li>Output you need, per minute, hour, or day</li>
+        <li>How the product behaves: powder, granule, liquid, paste, oily, sticky, fragile, or dusty</li>
+        <li>Preferred machine material, if you have one in mind</li>
+        <li>Photos or a short video of the product and the current pack</li>
+      </ul>
+      <p class="note">If a size or a detail is missing, send what you know. We will ask for the rest.</p>
+    </div>
+  </div>
+  <div class="foot">
+    <div>
+      <strong>Send these details. We will reply with a machine and a quotation.</strong>
+      <p>Monday to Saturday, 9:00 a.m. to 7:00 p.m.</p>
+    </div>
+    <div>
+      <strong>+91 97911 62378</strong>
+      <p><a href="mailto:technopac.trak@gmail.com">technopac.trak@gmail.com</a><br />www.technopac.net</p>
+    </div>
+  </div>
+</section>
+
+<section class="sheet">
+  <div class="top">
+    <img class="logo" src="technopac-logo.png" alt="Technopac" />
+  </div>
+  <div class="rule"></div>
+  <h2 class="page">Machines by the job they do.</h2>
+  <p class="sub">Grouped by the work on your line, with the purpose of each machine.</p>
+  <div class="apps">
+    <div class="app">
+      <h3>Preparing food and ingredients</h3>
+      <table>
+        <tr><td class="name">Blender</td><td class="why">Mixes ingredients into an even blend</td></tr>
+        <tr><td class="name">Dryer</td><td class="why">Dries product to the moisture you need</td></tr>
+        <tr><td class="name">Fryer</td><td class="why">Fries in a controlled batch</td></tr>
+        <tr><td class="name">Mixer</td><td class="why">Mixes powders, granules, or pastes</td></tr>
+        <tr><td class="name">Sigma mixer</td><td class="why">Mixes heavy doughs and pastes</td></tr>
+        <tr><td class="name">Silo</td><td class="why">Stores bulk material before packing</td></tr>
+        <tr><td class="name">Pulveriser</td><td class="why">Grinds material to a fine powder</td></tr>
+        <tr><td class="name">Roaster</td><td class="why">Roasts grains, nuts, and spices</td></tr>
+        <tr><td class="name">Juice processing unit</td><td class="why">Extracts and prepares juice</td></tr>
+        <tr><td class="name">Destoner</td><td class="why">Removes stones from grain and pulses</td></tr>
+        <tr><td class="name">Grading machine</td><td class="why">Sorts product by size</td></tr>
+        <tr><td class="name">Mixing tank</td><td class="why">Mixes and holds liquids</td></tr>
+        <tr><td class="name">Sifter</td><td class="why">Separates fine and coarse particles</td></tr>
+        <tr><td class="name">Vegetable-cutting machine</td><td class="why">Cuts vegetables to a set size</td></tr>
+      </table>
+    </div>
+    <div class="app">
+      <h3>Water and clean handling</h3>
+      <table>
+        <tr><td class="name">RO water unit</td><td class="why">Cleans water used in the process</td></tr>
+        <tr><td class="name">UV tunnel</td><td class="why">Passes product under UV light</td></tr>
+      </table>
+      <h3 style="margin-top:3mm;">Filling the pack</h3>
+      <table>
+        <tr><td class="name">Pouch packing</td><td class="why">Fills and seals pouches</td></tr>
+        <tr><td class="name">Bottle packing</td><td class="why">Fills bottles</td></tr>
+        <tr><td class="name">Bagging machine</td><td class="why">Fills and closes bags</td></tr>
+        <tr><td class="name">Capping machine</td><td class="why">Fits caps on bottles and jars</td></tr>
+        <tr><td class="name">Inter-capping</td><td class="why">Seals the foil under the cap</td></tr>
+        <tr><td class="name">Tray sealer</td><td class="why">Seals a film lid onto trays</td></tr>
+        <tr><td class="name">Web sealer</td><td class="why">Seals a continuous film web</td></tr>
+        <tr><td class="name">Rotary filling</td><td class="why">Fills many containers on a turning line</td></tr>
+      </table>
+    </div>
+    <div class="app">
+      <h3>Labels, cartons, and dispatch</h3>
+      <table>
+        <tr><td class="name">Labelling machine</td><td class="why">Applies labels on packs</td></tr>
+        <tr><td class="name">Taping machine</td><td class="why">Tapes cartons closed</td></tr>
+        <tr><td class="name">Shrink tunnel</td><td class="why">Shrinks film tight around a pack</td></tr>
+        <tr><td class="name">Shrink-wrap machine</td><td class="why">Wraps a pack in shrink film</td></tr>
+        <tr><td class="name">L-sealer</td><td class="why">Seals film around a product</td></tr>
+        <tr><td class="name">Stretch wrapper</td><td class="why">Wraps a pallet for dispatch</td></tr>
+        <tr><td class="name">Secondary packing</td><td class="why">Places packs into cartons or cases</td></tr>
+        <tr><td class="name">Batch coding and serialisation</td><td class="why">Prints the batch code on each pack</td></tr>
+      </table>
+    </div>
+    <div class="app">
+      <h3>Pharma and measured doses</h3>
+      <table>
+        <tr><td class="name">Capsule polishing and sorting</td><td class="why">Cleans and sorts capsules</td></tr>
+        <tr><td class="name">Blister-pack leak tester</td><td class="why">Finds blister packs that leak</td></tr>
+        <tr><td class="name">Powder sampling</td><td class="why">Takes a sample from a powder batch</td></tr>
+        <tr><td class="name">Vial crimping / de-capping</td><td class="why">Seals or opens vial caps</td></tr>
+        <tr><td class="name">Syringe assembly</td><td class="why">Puts syringe parts together</td></tr>
+        <tr><td class="name">Dosage dispensing</td><td class="why">Measures and releases a set dose</td></tr>
+      </table>
+    </div>
+    <div class="app">
+      <h3>Moving and checking the line</h3>
+      <table>
+        <tr><td class="name">Pick and place</td><td class="why">Moves a product to the next point</td></tr>
+        <tr><td class="name">Robotic arms</td><td class="why">Handle products on the line</td></tr>
+        <tr><td class="name">Palletising</td><td class="why">Stacks cases onto a pallet</td></tr>
+        <tr><td class="name">De-palletising</td><td class="why">Takes cases off a pallet</td></tr>
+        <tr><td class="name">Robotic cartoning</td><td class="why">Loads products into cartons</td></tr>
+        <tr><td class="name">Vision camera</td><td class="why">Checks the pack with a camera</td></tr>
+      </table>
+    </div>
+    <div class="app">
+      <h3>Running the line</h3>
+      <table>
+        <tr><td class="name">Collaborative robots</td><td class="why">Work beside people in a clean area</td></tr>
+        <tr><td class="name">Robotic inspection</td><td class="why">Checks quality on the line</td></tr>
+        <tr><td class="name">Robotic filling</td><td class="why">Fills containers with a robot</td></tr>
+        <tr><td class="name">SCADA monitoring</td><td class="why">Shows how the line is running</td></tr>
+        <tr><td class="name">Recipe management</td><td class="why">Stores the settings for each product</td></tr>
+        <tr><td class="name">Control panel and PLC</td><td class="why">Starts, stops, and runs the machine</td></tr>
+        <tr><td class="name">Weighing and dispensing</td><td class="why">Weighs and releases ingredients</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="foot">
+    <div>
+      <strong>Send the product and the pack.</strong>
+      <p>A photo is enough to start. We will tell you which machine fits.</p>
+    </div>
+    <div>
+      <strong>+91 97911 62378</strong>
+      <p><a href="mailto:technopac.trak@gmail.com">technopac.trak@gmail.com</a><br />www.technopac.net</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
